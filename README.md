@@ -341,7 +341,7 @@ SELECT 字段列表 FROM 表名 [WHERE 条件] GROUP BY 分组字段名[HAVING �
 
 判断条件不同:where不能对聚合函数进行判断，而having可以。
 
-![image-20230802235604989](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230802235604989.png)
+![image-20230802235604989](images\image-20230802235604989.png)
 
 注意：
 
@@ -540,7 +540,7 @@ update enp set workno = lpad(workno,5,'0');
 
 外键用来让两张表的数据之间建立连接，从而保证数据的一致性和完整性。
 
-![image-20230809203353244](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230809203353244.png)
+![image-20230809203353244](images\image-20230809203353244.png)
 
 没有建立外键关联，无法保证数据的一致性和完整性
 
@@ -600,7 +600,7 @@ ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名) REF
 
 实现：在多的一方建立外键，指向少的一方的主键
 
-![image-20230809214916885](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230809214916885.png)
+![image-20230809214916885](images\image-20230809214916885.png)
 
 #### 多对多
 
@@ -610,7 +610,7 @@ ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名) REF
 
 实现：建立第三张中间表，中间表至少包含两个外键，分别关联两方主键。
 
-![image-20230809215951140](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230809215951140.png)
+![image-20230809215951140](images\image-20230809215951140.png)
 
 #### 一对一
 
@@ -620,7 +620,7 @@ ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名) REF
 
 实现：在任意一方加入外键，关联另外一方的主键，并且设置外键为唯一的（UNIQUE）
 
-![image-20230813161645215](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230813161645215.png)
+![image-20230813161645215](images\image-20230813161645215.png)
 
 ### 多表查询概述
 
@@ -637,13 +637,13 @@ select * from emp ,dept;
 
 笛卡尔乘积指数学中，两个集合A集合和B集合的所有组合情况**（在多表查询时，需要消除无效的笛卡尔积）**
 
-![image-20230813162418896](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230813162418896.png)
+![image-20230813162418896](images\image-20230813162418896.png)
 
 消除笛卡尔积：
 
 **WHERE**
 
-![image-20230813162622002](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230813162622002.png)
+![image-20230813162622002](images\image-20230813162622002.png)
 
 ### 多表查询分类
 
@@ -679,7 +679,7 @@ SELECT 字段列表 FROM 表1 [INNER] JOIN 表2 ON 连接条件...;
 SELECT 字段列表 FROM 表1 LEFT [OUTER] JOIN 表2 ON 条件...;
 ```
 
-![image-20230813210426204](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230813210426204.png)
+![image-20230813210426204](images\image-20230813210426204.png)
 
 ###### 右外连接
 
@@ -750,7 +750,7 @@ SELECT *FROM t1 WHERE column1 = (SELECT column1 FROM t2);
 
 常用的操作符：= <> > >= < <=
 
-![image-20230813232735951](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230813232735951.png)
+![image-20230813232735951](images\image-20230813232735951.png)
 
 #### 列子查询
 
@@ -766,7 +766,7 @@ SELECT *FROM t1 WHERE column1 = (SELECT column1 FROM t2);
 |  SOME  | 与ANY等同，使用SOME的地方都可以使用ANY |
 |  ALL   |    子查询返回列表的所有值都必须满足    |
 
-![image-20230813233312189](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230813233312189.png)
+![image-20230813233312189](images\image-20230813233312189.png)
 
 #### 行子查询
 
@@ -774,7 +774,7 @@ SELECT *FROM t1 WHERE column1 = (SELECT column1 FROM t2);
 
 常用的操作符：=、<>、IN、NOT IN
 
-![image-20230814140214421](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230814140214421.png)
+![image-20230814140214421](images\image-20230814140214421.png)
 
 ### 事务
 
@@ -784,7 +784,7 @@ SELECT *FROM t1 WHERE column1 = (SELECT column1 FROM t2);
 
 即这些操作要么同时成功，要么同时失败
 
-![image-20230816112318106](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230816112318106.png)
+![image-20230816112318106](images\image-20230816112318106.png)
 
 默认MySQL的事务是自动提交的，也就是说，当执行一条DML语句，MySQL会立即隐式的提交事务
 
@@ -845,11 +845,11 @@ ROLLBACK;
 | 不可重复读 |       一个事务先后读取同一条记录，但两次读取的数据不同       |
 |    幻读    | 一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据已经存在，像出现了"幻影" |
 
-![image-20230816120944913](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230816120944913.png)
+![image-20230816120944913](images\image-20230816120944913.png)
 
-![image-20230818153856646](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230818153856646.png)
+![image-20230818153856646](images\image-20230818153856646.png)
 
-![image-20230818154303765](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230818154303765.png)
+![image-20230818154303765](images\image-20230818154303765.png)
 
 #### 事务隔离级别
 
@@ -874,7 +874,7 @@ SET [SESSION|GLOBAL] TRANSACTION ISOLATION LEVEL[READ UNCOMMITTED | READ COMMITT
 
 #### MySQL体系结构
 
-![image-20230818235159487](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230818235159487.png)
+![image-20230818235159487](images\image-20230818235159487.png)
 
 连接层：
 
@@ -940,7 +940,7 @@ show variables like 'innodb_file_per_table'
 
 逻辑存储结构
 
-![image-20230819231209204](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230819231209204.png)
+![image-20230819231209204](images\image-20230819231209204.png)
 
 ##### MyISAM
 
@@ -980,9 +980,9 @@ hash索引(默认)
 
 xxx.sdi:存储表结构信息
 
-![image-20230819231855403](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230819231855403.png)
+![image-20230819231855403](images\image-20230819231855403.png)
 
-![image-20230819234325678](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230819234325678.png)
+![image-20230819234325678](images\image-20230819234325678.png)
 
 MyISAM(已经有NoSQL代替)
 
@@ -994,7 +994,7 @@ MEMORY(已经有redis代替)
 
 索引(index)是帮助Mysql高效获取数据的数据结构(有序)。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用(指向)数据，这样就可以在这些数据结构上实现高级查找算法，这张数据结构就是索引。
 
-![image-20230820150858849](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230820150858849.png)
+![image-20230820150858849](images\image-20230820150858849.png)
 
 |                            优势                             |                             劣势                             |
 | :---------------------------------------------------------: | :----------------------------------------------------------: |
@@ -1003,7 +1003,7 @@ MEMORY(已经有redis代替)
 
 #### 索引结构
 
-![image-20230820151323310](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230820151323310.png)
+![image-20230820151323310](images\image-20230820151323310.png)
 
 MySQL的索引是在存储引擎层实现的，不同的存储引擎有不同的结构：
 
@@ -1014,7 +1014,7 @@ MySQL的索引是在存储引擎层实现的，不同的存储引擎有不同的
 |  R-tree(空间索引)   | 空间索引是MyISAM引擎的一个特殊索引类型，主要用于地理空间数据类型 |
 | Full-text(全文索引) |          是一种通过建立倒排索引，快速匹配文档的方式          |
 
-![image-20230820151726882](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230820151726882.png)
+![image-20230820151726882](images\image-20230820151726882.png)
 
 #### 分类
 
@@ -1139,7 +1139,7 @@ EXPLAIN或者DESC命令获取MySQL如何执行SELECT语句的信息，包括在S
 EXPLAIN SELECT 字段列表 FROM 表名 WHERE 条件;
 ```
 
-![image-20230820233646330](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230820233646330.png)
+![image-20230820233646330](images\image-20230820233646330.png)
 
 EXPLAIN执行计划各字段含义：
 
@@ -1235,13 +1235,13 @@ explain select * from tb_user force index(idx_user_pro) where profession = '软�
 
 尽量使用覆盖索引（查询使用了索引，并且需要返回的列，在该索引中已经全部能够找到），减少使用select *
 
-![image-20230821113039567](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230821113039567.png)
+![image-20230821113039567](images\image-20230821113039567.png)
 
 using index condition：查找使用了索引，但是需要回表查询数据
 
 using where;using index：查找使用了索引，但是需要的数据都在索引列中能找到，所以不需要回表查询数据
 
-![image-20230821113835945](https://github.com/Pumnn1ayLee/MySQL_NOTE/blob/main/images/image-20230821113835945.png)
+![image-20230821113835945](images\image-20230821113835945.png)
 
 最优方案：为username,password建立联合索引
 
